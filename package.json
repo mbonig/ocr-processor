@@ -1,0 +1,15 @@
+{
+  "name": "ocr-processor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "zip": "zip -j handler.zip package.json handler/index.js",
+    "upload": "yarn zip && aws lambda update-function-code --function-name ocr-parse-email --zip-file fileb://handler.zip",
+    "test": "aws s3 rm s3://fourlittledogs-ocr/mackenzie/raw/test && aws s3 cp test-email s3://fourlittledogs-ocr/mackenzie/raw/test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
